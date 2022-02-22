@@ -12,5 +12,36 @@ export default createSchema({
   // to the ones provided by any plugins that are installed
   types: schemaTypes.concat([
     {
-      titles: "Coins",
-     
+      title: "Coins",
+      name: "coins",
+      type: "document",
+      fields: [
+        {
+          title: "Name",
+          name: "name",
+          type: "string",
+        },
+        {
+          title: "Symbols",
+          name: "symbol",
+          type: "string",
+        },
+        {
+          title: "Contract Address",
+          name: "contractAddress",
+          type: "string",
+        },
+        {
+          title: "USD Price",
+          name: "usdPrice",
+          type: "string",
+        },
+        {
+          title: "Logo",
+          name: "logo",
+          type: "image",
+        },
+      ],
+    },
+  ]),
+});
