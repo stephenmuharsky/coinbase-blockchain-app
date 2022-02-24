@@ -57,5 +57,5 @@ const Details = styled.div`
   text-align: center;
   margin-top: 1rem;
   font-weight: 500;
-  color: #282b2f;
+  color: #808080;
 `
