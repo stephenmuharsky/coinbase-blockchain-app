@@ -36,6 +36,9 @@ const Wrapper = styled.div`
   border-right: 1px solid #282b2f;
   width: calc(22rem - 16px - 16px);
   padding: 0 1rem;
+  position: -webkit-sticky; /* Safari */
+  position: sticky;
+  top: 0;
 `
 
 const LogoContainer = styled.div`
