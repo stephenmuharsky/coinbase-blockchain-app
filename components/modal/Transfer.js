@@ -64,7 +64,7 @@ const Transfer = ({
             value={amount}
             onChange={(e) => setAmount(e.target.value)}
           />
-          <span>BTC</span>
+          <span>{selectedToken.symbol}</span>
         </FlexInputContainer>
         <Warning style={{ color: amount && "#0a0b0d" }}>
           Amount is a required field
@@ -86,7 +86,7 @@ const Transfer = ({
         <Divider />
         <Row>
           <FieldName>Pay With</FieldName>
-          <CoinSelectList>
+          <CoinSelectList onClick={() => setAction("select")}>
             <Icon>
               <img src={imageUrl} />
             </Icon>

@@ -1,6 +1,7 @@
 import React, { useState } from "react"
 import styled from "styled-components"
 import Transfer from "./Transfer"
+import CoinSelector from "./CoinSelector"
 
 const TransferModal = ({ sanityTokens, thirdWebTokens, walletAddress }) => {
   const [action, setAction] = useState("send")
@@ -25,6 +26,17 @@ const TransferModal = ({ sanityTokens, thirdWebTokens, walletAddress }) => {
             walletAddress={walletAddress}
           />
         )
+      case "select":
+        return (
+          <CoinSelector
+            setAction={setAction}
+            selectedToken={selectedToken}
+            setSelectedToken={setSelectedToken}
+            sanityTokens={sanityTokens}
+            thirdWebTokens={thirdWebTokens}
+            walletAddress={walletAddress}
+          />
+        )
       case "receive":
         return <h2>receive</h2>
       default:
@@ -39,13 +51,13 @@ const TransferModal = ({ sanityTokens, thirdWebTokens, walletAddress }) => {
           style={action === "send" ? selectedStyle : unselectedStyle}
           onClick={() => setAction("send")}
         >
-          <p>send</p>
+          <p>Send</p>
         </Option>
         <Option
           style={action === "receive" ? selectedStyle : unselectedStyle}
           onClick={() => setAction("receive")}
         >
-          <p>receive</p>
+          <p>Receive</p>
         </Option>
       </Selector>
       <ModalMain>{selectedModal(action)}</ModalMain>
