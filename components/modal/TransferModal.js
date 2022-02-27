@@ -3,6 +3,7 @@ import styled from "styled-components"
 import Transfer from "./Transfer"
 import CoinSelector from "./CoinSelector"
 import { TailSpin } from "react-loader-spinner"
+import Receive from "./Receive"
 
 const TransferModal = ({ sanityTokens, thirdWebTokens, walletAddress }) => {
   const [action, setAction] = useState("send")
@@ -45,6 +46,7 @@ const TransferModal = ({ sanityTokens, thirdWebTokens, walletAddress }) => {
               width: "100%",
               height: "100%",
               display: "flex",
+              flexDirection: "column",
               justifyContent: "center",
               alignItems: "center",
               fontSize: "1.5rem",
@@ -55,7 +57,7 @@ const TransferModal = ({ sanityTokens, thirdWebTokens, walletAddress }) => {
             <TailSpin
               height="100"
               width="100"
-              color="grey"
+              color="#3773f5"
               ariaLabel="loading"
             />
           </div>
@@ -78,7 +80,13 @@ const TransferModal = ({ sanityTokens, thirdWebTokens, walletAddress }) => {
           </h2>
         )
       case "receive":
-        return <h2>receive</h2>
+        return (
+          <Receive
+            setAction={setAction}
+            selectedToken={selectedToken}
+            walletAddress={walletAddress}
+          />
+        )
       default:
         return <h2>send</h2>
     }
@@ -100,7 +108,9 @@ const TransferModal = ({ sanityTokens, thirdWebTokens, walletAddress }) => {
           <p>Receive</p>
         </Option>
       </Selector>
-      <ModalMain>{selectedModal(action)}</ModalMain>
+      <ModalMain style={{ overflow: "hidden" }}>
+        {selectedModal(action)}
+      </ModalMain>
     </Wrapper>
   )
 }
