@@ -35,12 +35,18 @@ const Header = ({
     <Wrapper>
       <Title>Assets</Title>
       <ButtonsContainer>
-        <WalletLink>
-          <WalletLinkTitle>Wallet Connected</WalletLinkTitle>
-          <WalletAddress>
-            {walletAddress.slice(0, 7)}...{walletAddress.slice(35)}
-          </WalletAddress>
-        </WalletLink>
+        {walletAddress ? (
+          <WalletLink>
+            <WalletLinkTitle>Wallet Connected</WalletLinkTitle>
+            <WalletAddress>
+              {walletAddress.slice(0, 7)}...{walletAddress.slice(35)}
+            </WalletAddress>
+          </WalletLink>
+        ) : (
+          <Button onClick={() => connectWallet("injected")}>
+            Connect Wallet
+          </Button>
+        )}
         <Button style={{ backgroundColor: "#3773f5", color: "#000" }}>
           Buy / Sell
         </Button>
